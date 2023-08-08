@@ -1,17 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RememberCarefully
 {
+
     public class HiddenBlock : MonoBehaviour
     {
         [SerializeField] private Sprite _hideSprite;
         [SerializeField] private Sprite _showSprite;
         [SerializeField] private GameObject _hiddenObject;
 
-
         private SpriteRenderer _sr;
+        private ScaleObjectWithDOTween _scaleObject;
+
+        public bool HasHiddenObject { get; set; } = false;
 
         private void Awake()
         {
@@ -21,7 +23,9 @@ namespace RememberCarefully
         private void Show()
         {
             _sr.sprite = _showSprite;
-            _hiddenObject.SetActive(true);
+            
+            if(HasHiddenObject)
+                _hiddenObject.SetActive(true);
         }
 
         private void Hide()
@@ -30,11 +34,28 @@ namespace RememberCarefully
             _hiddenObject.SetActive(false);
         }
 
+        public void Toggle(float time)
+        {
+            Show();
+            Invoke(nameof(Hide), time);
+        }
+
         private void OnMouseDown()
         {
-            Debug.Log("Mouse down");
             Show();
-            Invoke(nameof(Hide), 0.5f);
+
+
+            if(HasHiddenObject)
+            {
+                GridSystem.Instance.NumOfHiddenBlockShowed++;
+                bool isWin = GridSystem.Instance.IsWinning();
+                Debug.Log(isWin);
+            }
+            else
+            {
+                Debug.Log("Game over");
+            }
+            
         }
     }
 }
