@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9dafcffc1bb6f2e49ac2686c4e61242d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Koulen
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c3845053246ff2c4ebff239c4a0c4676, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

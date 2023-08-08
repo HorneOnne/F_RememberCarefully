@@ -35,9 +35,18 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - HiddenBlock
   - 
   m_SortingLayers:
+  - name: BackgroundUI
+    uniqueID: 4218141519
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Object
+    uniqueID: 2950838169
+    locked: 0
+  - name: UI
+    uniqueID: 97704459
     locked: 0
