@@ -6,6 +6,8 @@ namespace RememberCarefully
 
     public class HiddenBlock : MonoBehaviour
     {
+        public static event System.Action OnHiddenBlockClicked;
+
         [SerializeField] private Sprite _hideSprite;
         [SerializeField] private Sprite _showSprite;
         [SerializeField] private GameObject _hiddenObject;
@@ -42,20 +44,26 @@ namespace RememberCarefully
 
         private void OnMouseDown()
         {
-            Show();
+            if(GameplayManager.Instance.CurrentState == GameplayManager.GameState.PLAYING)
+            {
+                Show();
 
 
-            if(HasHiddenObject)
-            {
-                GridSystem.Instance.NumOfHiddenBlockShowed++;
-                bool isWin = GridSystem.Instance.IsWinning();
-                Debug.Log(isWin);
-            }
-            else
-            {
-                Debug.Log("Game over");
-            }
-            
+                if (HasHiddenObject)
+                {
+                    GridSystem.Instance.NumOfHiddenBlockShowed++;
+                    bool isWin = GridSystem.Instance.IsWinning();
+                    if (isWin)
+                        GameplayManager.Instance.ChangeGameState(GameplayManager.GameState.WIN);
+                }
+                else
+                {
+                    GameplayManager.Instance.ChangeGameState(GameplayManager.GameState.GAMEOVER);
+                }
+
+                SoundManager.Instance.PlaySound(SoundType.Hit, false);
+                OnHiddenBlockClicked?.Invoke();
+            }        
         }
     }
 }

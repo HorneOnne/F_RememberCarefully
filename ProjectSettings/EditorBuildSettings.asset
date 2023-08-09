@@ -6,7 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/RememberCarefully/Scenes/MenuScene.unity
+    guid: 28861fac5482ba14a95865b1ce2b5147
+  - enabled: 1
     path: Assets/RememberCarefully/Scenes/GameplayScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: cf68371afe2c2e44f8b85ff4eddc8ac3, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 24205c0163891f94fb4993ee89f0ebaf, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e18bd1203469eb249ac2274253dc600c, type: 2}
