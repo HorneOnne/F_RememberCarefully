@@ -15,6 +15,7 @@ namespace RememberCarefully
         private SpriteRenderer _sr;
         private ScaleObjectWithDOTween _scaleObject;
 
+        private bool _isShowing = false;
         public bool HasHiddenObject { get; set; } = false;
 
         private void Awake()
@@ -25,14 +26,17 @@ namespace RememberCarefully
         private void Show()
         {
             _sr.sprite = _showSprite;
-            
-            if(HasHiddenObject)
+            _isShowing = true;
+
+
+            if (HasHiddenObject)
                 _hiddenObject.SetActive(true);
         }
 
         private void Hide()
         {
             _sr.sprite = _hideSprite;
+            _isShowing = false;
             _hiddenObject.SetActive(false);
         }
 
@@ -44,10 +48,10 @@ namespace RememberCarefully
 
         private void OnMouseDown()
         {
+            if (_isShowing) return; 
             if(GameplayManager.Instance.CurrentState == GameplayManager.GameState.PLAYING)
             {
                 Show();
-
 
                 if (HasHiddenObject)
                 {
